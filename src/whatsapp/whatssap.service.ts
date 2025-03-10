@@ -202,6 +202,7 @@ export class WhatsappService {
           clientId: clientId,
           from: phoneWithCode,
         });
+        //Esto es para el envio de documentos 
         // if (responseAssistand.document.brochure == true) {
         //   await this.sendPDF(clientId, phoneWithCode);
         // }
@@ -209,6 +210,8 @@ export class WhatsappService {
           console.log('registrando nombre')
           await this.crmService.registerCustomer(responseAssistand.name, phoneNumber, conversation.id, conversation.thread);
         }
+
+        //Agendar una visita o convertir un lead a prospecto
         // if (responseAssistand.appointment && responseAssistand.appointment.confirm === true && conversation.opportunity != null) {
         //   await this.crmService.generateVisit(conversation.opportunity, responseAssistand.appointment);
         //   await this.crmService.convertCustomerToProspect(conversation.opportunity);

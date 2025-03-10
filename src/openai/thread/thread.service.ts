@@ -48,6 +48,7 @@ export class ThreadService {
     }
     return false;
   }
+
   // async respondeAsistant(threadId: string, messageDto: MessageDto) {
   //   await this.messageService.addMessage(messageDto.threadId, messageDto.message);
   //   const lastMessage = await this.messageService.getLastMessage(messageDto.assistantId, threadId);
@@ -86,6 +87,9 @@ export class ThreadService {
     // Continuar con el procesamiento del mensaje
     await this.messageService.addMessage(threadId, messageDto.message);
     const lastMessage = await this.messageService.getLastMessage(messageDto.assistantId, threadId);
+    if(lastMessage){
+      await this.whatsappService.sendMessage(messageDto.clientId, messageDto.from, lastMessage.message);
+    }
     return lastMessage;
 }
 
