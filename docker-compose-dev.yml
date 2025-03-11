@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   app:
-    container_name: nuna-properties-dev
+    container_name: ia-gac-dev
     build:
       context: .
       dockerfile: Dockerfile.dev
